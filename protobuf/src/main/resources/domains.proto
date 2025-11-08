@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package protobuf;
+option java_package = "org.eagle";
+option java_outer_classname = "DomainProto";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+enum Type {
+  QOS = 0;
+  QOE = 1;
+}
+
+message domain {
+  string domain_name = 1;
+  Type type = 2;
+  int64 interval =3;
+}
+
+message quality_config {
+  repeated domain configs = 1;
+}
+
+service QualityConfigService {
+  rpc UpsertQualityConfig(quality_config) returns (google.protobuf.Empty);
+}

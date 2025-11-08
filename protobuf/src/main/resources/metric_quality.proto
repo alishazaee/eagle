@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package protobuf;
+option java_package = "org.eagle";
+option java_outer_classname = "MetricsProto";
+
+import "google/protobuf/timestamp.proto";
+
+message DigMetrics{
+  int64 external_failure_rate =1;
+}
+
+message CurlMetrics {
+  int64 size_download = 1;
+  int64 size_upload = 2;
+  double speed_download = 3;
+  double speed_upload = 4;
+  double time_connect = 5;
+  double time_name_lookup = 6;
+  double time_pre_transfer = 7;
+  double time_redirect = 8;
+  double time_start_transfer = 9;
+  double time_total = 10;
+}
+
+message Metrics {
+  string domain_name = 1;
+  CurlMetrics curl_metrics = 2;
+  DigMetrics dig_metrics = 3;
+  google.protobuf.Timestamp recorded_at = 4;
+  string location = 5;
+  string net_interface = 6;
+}
