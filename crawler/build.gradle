@@ -4,7 +4,11 @@ plugins {
 
 dependencies {
     implementation project(':protobuf')
+    implementation project(':consumer-wrapper')
     implementation 'dnsjava:dnsjava:3.6.3'
     implementation 'org.apache.kafka:kafka-clients:3.6.1'
+    implementation 'redis.clients:jedis:7.0.0'
+    implementation 'org.yaml:snakeyaml:2.5'
+
 }
 
